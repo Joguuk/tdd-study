@@ -10,4 +10,8 @@ public enum BallStatus {
     public boolean isBall() {
         return this == BALL;
     }
+
+    public boolean isNothing() {
+        return this == NOTHING;
+    }
 }

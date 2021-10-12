@@ -19,9 +19,10 @@ public class Balls {
     }
 
     public PlayResult play(List<Integer> balls) {
-        Balls userBalls = new Balls(balls);
+        Balls userBalls = new Balls(balls);     // 4,1,2
         PlayResult playResult = new PlayResult();
-        for (Ball ball : this.balls) {
+
+        for (Ball ball : this.balls) {  // 1,2,3,
             BallStatus status = userBalls.play(ball);
             playResult.report(status);
         }
@@ -32,7 +33,7 @@ public class Balls {
     private BallStatus play(Ball ball) {
         return balls.stream()
                     .map(answer -> answer.play(ball))
-                    .filter(BallStatus::isStrike)
+                    .filter(ballStatus -> ballStatus.isBall() || ballStatus.isStrike())
                     .findFirst()
                     .orElse(BallStatus.NOTHING);
     }
